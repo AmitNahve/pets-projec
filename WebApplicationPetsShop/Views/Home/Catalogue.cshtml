@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplicationPetsShop.Models.Animal>
+
+@{
+    ViewBag.Title = "Catalog";
+}
+
+<h1>Catalogue</h1>
+<form action="/Home/AnimalByCategory" method="post">
+
+            <fieldset>Category <select id="Category" name="Category">
+
+            <option value="">All categories</option>
+
+            <option value="Birds">Birds</option>
+
+            <option value="Invertebrates">Invertebrates</option>
+
+            <option value="Fish">Fish</option>
+
+            <option value="Mammals">Mammals</option>
+
+            <option value="Reptiles">Reptiles</option>
+
+            <option value="Amphibians">Amphibians</option>
+
+            </select>
+
+            <p><input type="submit" value="Submit" /> </p>
+
+            </fieldset>
+
+            </form>
+<table class="table table-bordered table-responsive">
+      <tr>
+        <th>Portrait</th>
+        <th>Name</th>
+        <th></th>
+      </tr>
+ @foreach (var animal in Model)
+    {
+      <tr>
+        <td> <img class="images" src=" @animal.PictureSrc" height="50" width="50"/></td>
+        <td>@animal.Name</td>
+       <td><a class="btn btn-secondary" asp-action="Details" asp-controller="Home" asp-route-id="@animal.AnimalId">Details</a></td>
+      </tr>
+    }
+    </table>
+   @* <div class="d-flex justify-content-between">
+@foreach (var animal in Model)
+{
+    <div class="card col-xs-1 text-center" style="width: 13rem; height: 11rem;">
+      <img height="60" width="50" src=" @animal.PictureSrc"  class="card-img-top"   alt="...">
+      <div class="card-body">
+        <h5 class="card-title">@animal.Name</h5>
+        <a class="btn btn-secondary" asp-action="Details" asp-controller="Home" asp-route-id="@animal.AnimalId">Details</a>
+      </div>
+    </div>
+}
+  </div>*@
+<a type="button" class="btn btn-secondary float-md-end "  data-dismiss="modal" asp-controller="Home" asp-action="Index">Back</a>

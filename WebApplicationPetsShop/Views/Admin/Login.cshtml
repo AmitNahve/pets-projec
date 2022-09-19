@@ -1,0 +1,38 @@
+﻿@model WebApplicationPetsShop.Models.Admin
+@{
+    ViewBag.Title = "Login";
+}
+
+<div class="vh-100 d-flex justify-content-center align-items-center">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card bg-white">
+                    <div class="card-body p-5">
+
+
+                        <form method="post" asp-action="LoggingIn" asp-controller="Admin" class="">
+
+                            <h5 class="modal-title">Login</h5>
+
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    <span asp-validation-for="Name"></span>
+                                    <input type="text" asp-for="Name" class="form-control" />
+                                    <label>Password:</label>
+                                    <span asp-validation-for="Password"></span>
+                                    <input type="password" asp-for="Password" TextMode="Password" class="form-control" />
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary" data-dismiss="modal">Close</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

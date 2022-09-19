@@ -1,0 +1,43 @@
+﻿@model WebApplicationPetsShop.Models.Animal
+@{
+    ViewBag.Title = "Details";
+}
+
+<table class="table table-bordered table-responsive">
+    <tr>
+        <th>Portrait</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Description</th>
+        <th>comments</th>
+    </tr>
+
+
+    <tr>
+        <td> <img class="images" src=" @Model.PictureSrc" height="50" width="50" /></td>
+        <td>@Model.Name</td>
+        <td>@Model.Age</td>
+        <td>@Model.Description</td>
+        @*<td>@Model.Comments!.Count()</td>*@
+        <td>
+            @foreach (var c in Model.Comments!)
+            {
+                <p>@c.CommentText ,</p>
+            }
+        </td>
+    </tr>
+</table>
+<form method="post" asp-action="AddNewComment"  asp-route-id="@Model.AnimalId" asp-controller="Home">
+
+    <h5 class="modal-title">Add Comment</h5>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Comment</label>
+            @Html.TextBox("comment")
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Add Comment</button>
+                <a type="button" class="btn btn-secondary" data-dismiss="modal" asp-controller="Home" asp-action="Catalogue">Back</a>
+            </div>
+        </div>
+    </div>
+</form>

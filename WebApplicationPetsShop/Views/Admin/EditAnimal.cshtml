@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "EditAnimal";
+}
+
+@model WebApplicationPetsShop.Models.Animal
+
+<div class="text-center">
+    <img src="@Model.PictureSrc" class="img-thumbnail administrator-edit-thumbnail">
+
+    <form asp-action="EditExecution" asp-route-animalId="@Model.AnimalId" asp-route-age="" asp-route-name="" asp-route-categoryId="" asp-route-description="" asp-route-pictureSrc="">
+        <table class="table administrator-edit-table">
+            <tbody>
+                <tr>
+                    <th>Picture Source:</th>
+                    <td>
+                        <input asp-for="PictureSrc" />
+                        <span asp-validation-for="PictureSrc"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>
+                        <input asp-for="Name" />
+                        <span asp-validation-for="Name"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>
+                        <input asp-for="Age" />
+                        <span asp-validation-for="Age"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>
+                        <textarea asp-for="Description" style="width: 100%"></textarea>
+                        <span asp-validation-for="Description"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Category Name</th>
+                    <td>
+                        <select name="CategoryId" style="text-align: center;">
+                            @foreach (var category in ViewBag.categories)
+                            {
+                                if (category.CategoryId == Model.CategoryId)
+                                {
+                                    <option selected="selected" value="@category.CategoryId">@category.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.CategoryId">@category.Name</option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="CategoryId"></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="margin-bottom: 3%;">
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </form>
+</div>
+

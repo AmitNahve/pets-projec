@@ -1,0 +1,30 @@
+﻿@*@model IEnumerable<WebApplicationPetsShop.Models.Animal>
+*@
+@{
+    ViewBag.Title = "Admin";
+}
+
+<h1>Admin</h1>
+<table class="table table-bordered table-responsive">
+    <tr>
+        <a class="btn btn-secondary" asp-action="AddAnimal">Add Animal</a>
+
+        <th>Portrait</th>
+        <th>Name</th>
+        <th>Description</th>
+        @* <th>Number of comments</th>*@
+
+    </tr>
+    @foreach (var animal in Model)
+    {
+        <tr>
+            <td> <img class="images" src=" @animal.PictureSrc" height="50" width="50" /></td>
+            <td>@animal.Name</td>
+            <td>@animal.Description</td>
+            @* <td>@animal.Comments!.Count()</td>*@
+            <td> <a class="btn btn-secondary" asp-action="Delete" asp-route-id="@animal.AnimalId">Delete</a></td>
+            <td> <a class="btn btn-secondary" asp-action="EditAnimal" asp-route-id="@animal.AnimalId">Edit</a></td>
+        </tr>
+    }
+</table>
+
